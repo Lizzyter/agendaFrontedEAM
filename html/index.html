@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" ></link>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" ></link>
+
+    <script src="https://kit.fontawesome.com/05689dac11.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/src/css/estilos.css">
+    
+    <title>Agenda Telefónica</title>
+    <link rel="shortcut icon" href="/src/img/icono_head.png">
+  </head>
+  <body>
+ <!-- Nav Bar -->
+ <nav class="navbar navbar-expand-lg nav justify-content-center" style="background:#83BBDC;">
+    <div>
+      <span class="navbar-brand">
+        <a class="navbar-brand" href="#">
+          <img src="/src/img/icono.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          AGENDA TELEFÓNICA
+        </a>
+      </span>
+    </div>
+  </nav>
+  <!-- Agregar Contactos -->
+  <section id="agregarSection" class="container py-5">
+    <span class="fs-4">
+        Nuevo contacto
+    </span>
+    
+    <form class="row">
+        <div class="row my-3">
+            <div class="col-md-6 mb-3">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre del contacto"  class="form-control" required />
+                <div class="invalid-feedback">
+                  El campo nombre es requerido.
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="apellido">Apellido:</label>
+                <input type="text" name="apellido" id="apellido" placeholder="Apellido/s del contacto"  class="form-control" required/>
+                <div class="invalid-feedback">
+                  El campo apellido es requerido.
+                </div>
+              </div>
+        </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="numero">Número telefónico:</label>
+                <input type="tel" name="telefono" id="telefono" placeholder="Número telefónico del contacto"  class="form-control" required/>
+                <div class="invalid-feedback">
+                  El campo número telefónico es requerido.
+                </div>
+              </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" name="correo" id="email" placeholder="correo@ejemplo.com"  class="form-control" required/>
+            <div class="invalid-feedback">
+              El campo es requerido, ingresa un correo electronico valido.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" id="direccion" placeholder="Dirección del contacto"  class="form-control mb-3" required/>
+            <div class="invalid-feedback">
+              El campo es dirección es requerido.
+            </div>
+        </div>
+
+      <div class="">
+        <button type="submit" class="btn btn-success mx3" id="botonGuardar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+            Guardar
+        </button>
+        <button type="reset" class="btn btn-danger mx-3" id="botonDescartar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+                <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+            </svg>
+            Descartar
+        </button>
+      </div>
+
+    </form>
+
+  </section>
+
+  <!-- Editar Contacto -->
+  <section id="editarSection" class="container my-3" style="display: none;" >
+    <span class="fs-4">
+      Editar contacto
+  </span>
+  
+  <form class="row">
+      <div class="row my-3">
+          <div class="col-md-6 mb-3">
+              <label for="nombre">Nombre:</label>
+              <input type="text" name="nombre" id="nombreEditar" placeholder="Nombre del contacto"  class="form-control" required />
+              <div class="invalid-feedback">
+                El campo nombre es requerido.
+              </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+              <label for="apellido">Apellido:</label>
+              <input type="text" name="apellido" id="apellidoEditar" placeholder="Apellido/s del contacto"  class="form-control" required/>
+              <div class="invalid-feedback">
+                El campo apellido es requerido.
+              </div>
+            </div>
+      </div>
+
+      <div class="row my-3">
+          <div class="col-md-6 mb-3">
+              <label for="numero">Número telefónico:</label>
+              <input type="tel" name="telefono" id="telefonoEditar" placeholder="Número telefónico del contacto"  class="form-control" required/>
+              <div class="invalid-feedback">
+                El campo número telefónico es requerido.
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" name="correo" id="emailEditar" placeholder="correo@ejemplo.com"  class="form-control" required/>
+        <div class="invalid-feedback">
+          El campo es requerido, ingresa un correo electronico valido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="direccion">Dirección:</label>
+          <input type="text" name="direccion" id="direccionEditar" placeholder="Dirección del contacto"  class="form-control mb-3" required/>
+          <div class="invalid-feedback">
+            El campo es dirección es requerido.
+          </div>
+      </div>
+
+    <div class="">
+      <button type="submit" class="btn btn-success mx3" id="botonEditar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+          Guardar cambios
+      </button>
+      <button type="reset" class="btn btn-danger mx-3" id="botonCancelarEditar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+              <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+          </svg>
+          Cancelar
+      </button>
+    </div>
+
+  </form>
+  </section>
+
+  <!-- Nuevo numero -->
+  <section id="nuevoNumeroSection" class="container my-3" style="display: none;">
+    <span class="fs-4">Agregar otro número</span>
+    <form class="row">
+
+      <div class="col-md-6 mb-3">
+        <label for="numero">Número telefónico:</label>
+        <input type="tel" name="telefonNuevo" id="telefonoNuevo" placeholder="Número telefónico del contacto"  class="form-control" required/>
+        <div class="invalid-feedback">
+          El campo número telefónico es requerido.
+        </div>
+      </div>
+
+      <div class="">
+        <button type="submit" class="btn btn-success mx3" id="botonAgregarNumero">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+            Guardar nuevo numero
+        </button>
+        <button type="reset" class="btn btn-danger mx-3" id="botonCancelarNumero">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+                <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+            </svg>
+            Cancelar
+        </button>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- Listar contactos -->
+    <section id="tabla" class="container py-3">
+        <section id="spinner">
+            <div class="loader-wrapper">
+              <div class="loader loader-outer">
+                <div class="loader loader-inner"></div>
+              </div>
+            </div>
+          </section>
+    </section>
+
+    <!--  Detalles del contacto -->
+    <section id="modal">
+        
+    </section>
+    
+  </body>
+  
+  <script src="//code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  <script src="/js/app.js"></script>
+</html>
