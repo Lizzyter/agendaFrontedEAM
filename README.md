@@ -125,7 +125,7 @@ Al borrar un contacto su id no será ni visualizado ni consuldato ya que se habr
 Podrás encontrar el repositorio del backend para que puedas ejecutar esta aplicación web.
 <br>
 
-[Backend de la aplicación](https://github.com/Lizzyter/agendaBackend2)
+[Backend de la aplicación](https://github.com/Lizzyter/agendaBackendEAM)
 
 
 ## Maintainer
