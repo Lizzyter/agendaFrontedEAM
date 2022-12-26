@@ -322,7 +322,7 @@ const eliminarContacto = (id) => {
   let contacto = contactos.find(contacto => contacto.id == id);
   console.log('Eliminar: ', contacto);
 
-  // Hacemos la peticion Delete con el id del contacto
+  // Delete con el id del contacto
   $.ajax({
     type: "DELETE",
     url: `http://localhost:8000/api/contactos/${id}`,
@@ -335,7 +335,7 @@ const eliminarContacto = (id) => {
     success: function (data) {
       console.log('Éxito', data)
 
-      // Recargamos la pagina para que se actualice la lista de contactos
+      // Reload a la página principal para visualizar el cambio
       listarContactos();
       window.location.reload();
     },
@@ -348,7 +348,7 @@ const eliminarContacto = (id) => {
   })
 }
   
-  // Funcion para cancelar y ocultar el formulario de editar
+  // Cancelar y ocultar el formulario de editar
   let botonCancelarEditar = document.getElementById('botonCancelarEditar');
   botonCancelarEditar.addEventListener('click', function() {
     $('#editarSection').hide();
@@ -357,7 +357,7 @@ const eliminarContacto = (id) => {
     console.log('Cancelar');
   });
   
-  // Funcion para cancelar y ocultar el formulario de agregar numero
+  // Cancelar y ocultar el formulario de agregar numero
   let botonCancelarNumero = document.getElementById('botonCancelarNumero');
   botonCancelarNumero.addEventListener('click', function() {
     $('#nuevoNumeroSection').hide();
